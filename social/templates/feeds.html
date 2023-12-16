@@ -1,0 +1,257 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect And Collaborate</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        body,
+        html {
+            background-color: #ffffff;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .main-body {
+            background-color: #ffffff !important;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .navbar {
+            background-color: #004080;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 60px;
+            margin-left: -3px;
+        }
+    
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+    
+        .navbar-links {
+            display: flex;
+            align-items: center;
+        }
+    
+        .navbar-links a {
+            margin: 0 10px;
+        }
+    
+        .navbar-icons {
+            display: flex;
+            align-items: center;
+        }
+    
+        .search-icon,
+        .notification-icon {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+    
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #004080;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            right: 0; /* Adjust to position the dropdown to the right */
+        }
+    
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+    
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    
+        .content {
+            margin-top: 70px; /* Adjust as needed */
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        .heading {
+            color: #004080;
+            text-align: center; /* Center the text */
+        }
+    
+        .user-profile img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+
+
+        .card {
+            max-width: 400px;
+            margin: 70px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-section {
+            display: flex;
+            padding: 15px;
+            align-items: center;
+            background-color: #004080;
+        }
+
+        .profile-picture-feed {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            margin-right: 45px;
+        }
+
+        .user-info {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .post-section {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .caption-input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .image-upload {
+            margin-bottom: 15px;
+        }
+
+        .post-button {
+            background-color: #004080;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    
+    
+    
+</head>
+
+<body class="main-body">
+    <!-- ------------------------------------NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#home"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+        </div>
+        <div class="navbar-links">
+            <!-- Existing dropdowns and links -->
+
+            <!-- New links for Events, Groups, Connections -->
+            <a href="#">Events</a>
+            <a href="#">Groups</a>
+            <a href="#">Connections</a>
+        </div>
+        <div class="navbar-icons">
+            <!-- Existing search and notification icons -->
+
+            <!-- New icons for Search and Notification -->
+            <div class="search-icon"><i class="material-icons" style="font-size: 1.8rem;">search</i></div>
+            <div class="notification-icon"><i class="material-icons" style="font-size: 1.8rem;">notifications</i></div>
+
+            <!-- Existing user profile dropdown -->
+            <div class="dropdown">
+                {% if user.is_authenticated %}
+                <div class="user-profile">
+                    <img src="{{ user.userprofile.profile_picture.url }}"  class="profile-picture">
+                </div>
+                {% else %}
+                    <a class="login-text" href="{% url 'signin' %}">Login</a>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    <div class="dropdown-content">
+                        <a href="#">Profile</a>
+                        <a href="{% url 'signout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="dropdown-content">
+                        <a href="{% url 'signin' %}">Login</a>
+                        <a href="{% url 'signup' %}">Signup</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+<br><br>
+    <div class="content">
+        <h1 class="heading">Connect And Collaborate</h1>
+        <!-- Other content goes here -->
+
+
+        <div class="card">
+            <div class="profile-section">
+                <img src="{{ user.userprofile.profile_picture.url }}"" alt="Profile Picture" class="profile-picture-feed">
+                <div class="user-info">
+                    <p>{{ user.userprofile.first_name }}</p>
+                </div>
+            </div>
+            <div class="post-section">
+                <textarea class="caption-input" placeholder="Write your caption..."></textarea>
+                <input type="file" class="image-upload" accept="image/*">
+                <button class="post-button">Post</button>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>

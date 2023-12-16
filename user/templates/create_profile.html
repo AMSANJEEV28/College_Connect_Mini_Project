@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333;
+        }
+
+        section {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 1fr;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555555;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Create Your Profile</h2>
+        
+        <section>
+            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            {{ form.first_name }}
+            
+            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            {{ form.last_name }}
+            
+            <label for="{{ form.college_name.id_for_label }}">College Name:</label>
+            {{ form.college_name }}
+            
+            <label for="{{ form.university_name.id_for_label }}">University Name:</label>
+            {{ form.university_name }}
+        </section>
+        
+        <section>
+            <label for="{{ form.registration_id.id_for_label }}">Registration ID:</label>
+            {{ form.registration_id }}
+            
+            <label for="{{ form.date_of_birth.id_for_label }}">Date of Birth:</label>
+            {{ form.date_of_birth }}
+            
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            {{ form.gender }}
+        </section>
+        
+        <section>
+            <label for="{{ form.profile_picture.id_for_label }}">Profile Picture:</label>
+            {{ form.profile_picture }}
+        </section>
+        
+        <section>
+            <label for="{{ form.department.id_for_label }}">Department:</label>
+            {{ form.department }}
+            
+            <label for="{{ form.course.id_for_label }}">Course:</label>
+            {{ form.course }}
+        </section>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
