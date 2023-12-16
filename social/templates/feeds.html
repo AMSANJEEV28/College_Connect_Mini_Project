@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         body,
@@ -121,11 +122,14 @@
         }
 
 
-
+        .feedpg{
+            display:flex;
+            justify-content:space-between;
+        }
         .card {
-            max-width: 400px;
-            margin: 70px auto;
-            background-color: #fff;
+            width: 70%;
+            height: 40vh;
+            background-color:#fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
@@ -177,6 +181,150 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        /* left part css */
+        .feedpgleft{
+            background-color: #004080;
+            padding: 2vh;
+            border-radius: 1rem;
+            display:flex;
+            align-items: center;
+            width:25%;
+            height:70vh;
+            justify-content: center;
+        }
+        .left1{
+            background-color: rgb(149, 182, 236);
+            border-radius: 1rem;
+            width:95%;
+            height: 90%;
+        }
+        .left1 h5{
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .leftgrpicons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height:25%;
+        }
+
+        .leftgrpicons a {
+            flex-basis: calc(50% - 16px); /* Adjust flex-basis to control column width and consider margins */
+            box-sizing: border-box;
+            text-align: center; /* Center the content horizontally */
+            margin: 8px; /* Adjust the margin as needed */
+            
+        }
+
+        .leftgrpicons svg {
+            fill: #0a29a5; /* Change the fill color as needed */
+            height: 4vh;
+            width:5vw;
+        }
+
+        /* right part css */
+        .feedpgright{
+            background-color: #004080;
+            padding: 2vh;
+            border-radius: 1rem;
+            display:flex;
+            align-items: center;
+            width:25%;
+            height:70vh;
+            justify-content: center;
+        }
+
+        .right1{
+            background-color: rgb(149, 182, 236);
+            border-radius: 1rem;
+            width:95%;
+            height: 90%;
+        }
+        .topnews1{
+            background-color:#004080;
+            border-radius: 1rem;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:3vh;
+            margin:0vh 3vh;
+            height:78%;
+        }
+        .topnews1 a{
+            font-size: 1.4rem;
+            
+        }
+        .right1 h5{
+            margin:3vh 0;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        /* post css */
+        .feed-container {
+        max-width: 800px;
+        margin: 20px auto;
+        overflow-y: auto;
+        max-height:72vh;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #ddd;
+        padding: 20px;
+        }
+
+        .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        }
+
+        .profile-pic {
+        border-radius: 50%;
+        margin-right: 10px;
+        }
+
+        .profile-pic img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        }
+
+        .user-info .user-name {
+        font-weight: bold;
+        color: #385898;
+        }
+
+        .post-info {
+        font-size: 14px;
+        color: #606770;
+        }
+
+        .post img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        }
+
+        .post-content {
+        margin-top: 10px;
+        }
+
+        .post-actions {
+        margin-top: 10px;
+        color: #606770;
+        }
+
+        .post-actions i {
+        margin-right: 10px;
         }
     </style>
     
@@ -233,21 +381,136 @@
     <div class="content">
         <h1 class="heading">Connect And Collaborate</h1>
         <!-- Other content goes here -->
-
-
-        <div class="card">
-            <div class="profile-section">
-                <img src="{{ user.userprofile.profile_picture.url }}"" alt="Profile Picture" class="profile-picture-feed">
-                <div class="user-info">
-                    <p>{{ user.userprofile.first_name }}</p>
+        
+        <div class="feedpg" >
+            <!-- left -->
+            <div class="feedpgleft">
+                <div class="left1">
+                    <h5 class="left2">My Groups</h5>
+                    <div class="leftgrpicons">
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z"/></svg></a> 
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z"/></svg></a>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z"/></svg></a>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="20" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M72 88a56 56 0 1 1 112 0A56 56 0 1 1 72 88zM64 245.7C54 256.9 48 271.8 48 288s6 31.1 16 42.3V245.7zm144.4-49.3C178.7 222.7 160 261.2 160 304c0 34.3 12 65.8 32 90.5V416c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V389.2C26.2 371.2 0 332.7 0 288c0-61.9 50.1-112 112-112h32c24 0 46.2 7.5 64.4 20.3zM448 416V394.5c20-24.7 32-56.2 32-90.5c0-42.8-18.7-81.3-48.4-107.7C449.8 183.5 472 176 496 176h32c61.9 0 112 50.1 112 112c0 44.7-26.2 83.2-64 101.2V416c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32zm8-328a56 56 0 1 1 112 0A56 56 0 1 1 456 88zM576 245.7v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM320 32a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM240 304c0 16.2 6 31 16 42.3V261.7c-10 11.3-16 26.1-16 42.3zm144-42.3v84.7c10-11.3 16-26.1 16-42.3s-6-31.1-16-42.3zM448 304c0 44.7-26.2 83.2-64 101.2V448c0 17.7-14.3 32-32 32H288c-17.7 0-32-14.3-32-32V405.2c-37.8-18-64-56.5-64-101.2c0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112z"/></svg></a>
+                    </div>
+                    <h5 class="left3">My Events</h5>
+                    <div class="leftgrpicons">
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></a>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></a>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></a>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></a>
+                    </div>
                 </div>
             </div>
-            <div class="post-section">
-                <textarea class="caption-input" placeholder="Write your caption..."></textarea>
-                <input type="file" class="image-upload" accept="image/*">
-                <button class="post-button">Post</button>
+
+            <!-- mid -->
+            <div class="midpart" style="display:flex;flex-direction: column;align-items: center;width:45%">
+                <div class="card">
+                    <div class="profile-section">
+                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
+                        <div class="user-info">
+                            <p>{{ user.userprofile.first_name }}</p>
+                        </div>
+                    </div>
+                    <div class="post-section">
+                        <textarea class="caption-input" placeholder="Write your caption..."></textarea>
+                        <input type="file" class="image-upload" accept="image/*">
+                        <button class="post-button">Post</button>
+                    </div>
+                </div>
+                <!-- posts -->
+                <div class="feed-container">
+                    <div class="post">
+                      <div class="user-info">
+                        <div class="profile-pic"><img src="https://scontent.fdel1-7.fna.fbcdn.net/v/t39.30808-6/329244691_538565831414482_9187562304903578017_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Zd0QvIJPIhMAX9pqZB1&_nc_ht=scontent.fdel1-7.fna&oh=00_AfB00tGY8amO_qzLHpu2aUBg5xHRPuRvDoifoZgP7ztU0A&oe=6582B41A" alt="Profile Picture"></div>
+                        <div class="user-name">John Doe</div>
+                      </div>
+                      <div class="post-info">Posted on January 1, 2023</div>
+                      <img src="https://blog.hubspot.com/hs-fs/hubfs/parts-url_1.webp?width=893&height=600&name=parts-url_1.webp" alt="Example Image">
+                      <div class="post-content">
+                        This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      </div>
+                      <div class="post-actions">
+                        <i class="far fa-thumbs-up"></i> Like
+                        <i class="far fa-comment"></i> Comment
+                        <i class="fas fa-share"></i> Share
+                      </div>
+                    </div>
+
+
+                    <div class="post">
+                      <div class="user-info">
+                        <div class="profile-pic"><img src="https://thumbs.dreamstime.com/z/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg" alt="Profile Picture"></div>
+                        <div class="user-name">John Doe</div>
+                      </div>
+                      <div class="post-info">Posted on January 1, 2023</div>
+                      <img src="https://thumbs.dreamstime.com/z/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg" alt="Example Image">
+                      <div class="post-content">
+                        This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      </div>
+                      <div class="post-actions">
+                        <i class="far fa-thumbs-up"></i> Like
+                        <i class="far fa-comment"></i> Comment
+                        <i class="fas fa-share"></i> Share
+                      </div>
+                    </div>
+
+
+                    <div class="post">
+                      <div class="user-info">
+                        <div class="profile-pic"><img src="profile-pic.jpg" alt="Profile Picture"></div>
+                        <div class="user-name">John Doe</div>
+                      </div>
+                      <div class="post-info">Posted on January 1, 2023</div>
+                      <img src="example-image.jpg" alt="Example Image">
+                      <div class="post-content">
+                        This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      </div>
+                      <div class="post-actions">
+                        <i class="far fa-thumbs-up"></i> Like
+                        <i class="far fa-comment"></i> Comment
+                        <i class="fas fa-share"></i> Share
+                      </div>
+                    </div>
+
+
+                    <div class="post">
+                      <div class="user-info">
+                        <div class="profile-pic"><img src="profile-pic.jpg" alt="Profile Picture"></div>
+                        <div class="user-name">John Doe</div>
+                      </div>
+                      <div class="post-info">Posted on January 1, 2023</div>
+                      <img src="example-image.jpg" alt="Example Image">
+                      <div class="post-content">
+                        This is a sample post content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                      </div>
+                      <div class="post-actions">
+                        <i class="far fa-thumbs-up"></i> Like
+                        <i class="far fa-comment"></i> Comment
+                        <i class="fas fa-share"></i> Share
+                      </div>
+                    </div>
+                
+                    <!-- These are the hardcoded posts -->
+                </div>
+            </div>
+            
+
+            <!-- right -->
+            <div class="feedpgright">
+                <div class="right1">
+                    <h5>Top News</h5>
+                    <div class="topnews1">
+                        <a href="#">News1</a>
+                        <a href="#">News2</a>
+                        <a href="#">News3</a>
+                        <a href="#">News4</a>
+                        <a href="#">News5</a>
+                    </div>
+                </div>
             </div>
         </div>
+        
 
 
 
