@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Group
 from .forms import GroupCreationForm, GroupSearchForm, GroupJoinForm
 
+
 def create_group(request):
     if request.method == 'POST':
         form = GroupCreationForm(request.POST)
@@ -19,9 +20,10 @@ def create_group(request):
 # social/views.py
 # ...
 
+
 def search_group(request):
     user_groups = []
-    
+
     if request.user.is_authenticated:
         user_groups = request.user.group_members.all()
 
@@ -57,7 +59,7 @@ def search_group(request):
 
     return render(request, 'search_group.html', {'form': form, 'search_results': search_results, 'user_groups': user_groups})
     user_groups = []
-    
+
     if request.user.is_authenticated:
         user_groups = request.user.group_members.all()
 
@@ -92,16 +94,19 @@ def search_group(request):
         form = GroupSearchForm()
 
     return render(request, 'search_group.html', {'form': form, 'search_results': search_results, 'user_groups': user_groups})
+
 
 def join_group(request, group_id):
     group = Group.objects.get(group_id=group_id)
     group.members.add(request.user)
     return redirect('group_detail', group_id=group.group_id)
 
+
 def group_detail(request, group_id):
     group = Group.objects.get(group_id=group_id)
     user_groups = request.user.group_members.all()
     return render(request, 'group_detail.html', {'group': group, 'user_groups': user_groups})
+
 
 def feeds_view(request):
     # Your view logic here

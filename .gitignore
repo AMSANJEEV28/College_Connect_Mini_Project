@@ -1,5 +1,5 @@
 db.sqlite3
 media/profile_pics*
 !media/profile_pics/.gitkeep
-profile_pocs/*
+profile_pics/*
 !profile_pics/.gitkeep

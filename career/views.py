@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+def academic_view(request):
+    # Your view logic here
+    return render(request, 'academic.html')
+
+def jobs_view(request):
+    # Your view logic here
+    return render(request, 'jobs.html')

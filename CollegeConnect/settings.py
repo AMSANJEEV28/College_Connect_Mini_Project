@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'home',
     'events',
     'social',
-    'user',    
+    'user',  
+    'career',  
 ]
 
 MIDDLEWARE = [
