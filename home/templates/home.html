@@ -19,7 +19,7 @@
     <!-- ------------------------------------NAVBAR -->
     <nav class="navbar">
         <div class="logo">
-            <a href="#home"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
         </div>
         <div class="navbar-links">
             <div class="dropdown">
@@ -34,7 +34,7 @@
             <div class="dropdown">
                 <a href="#">Features</a>
                 <div class="dropdown-content">
-                    <a href="#">Social Networking</a>
+                    <a href="{% url 'social:feeds' %}">Social Networking</a>
                     <a href="#">Academic Resources</a>
                     <a href="#">Career Development</a>
                     <a href="#">User Engagement</a>
@@ -69,18 +69,18 @@
                         <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
                     </div>
                 {% else %}
-                    <a class="login-text" href="{% url 'signin' %}">Login</a>
+                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
                 {% endif %}
                 
                 {% if user.is_authenticated %}
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
-                    <a href="{% url 'signout' %}">Logout</a>
+                    <a href="{% url 'user:profile' %}">Profile</a>
+                    <a href="{% url 'user:signout' %}">Logout</a>
                 </div>
                 {% else %}
                 <div class="dropdown-content">
-                    <a href="{% url 'signin' %}">Login</a>
-                    <a href="{% url 'signup' %}">Signup</a>
+                    <a href="{% url 'user:signin' %}">Login</a>
+                    <a href="{% url 'user:signup' %}">Signup</a>
                 </div>
                 {% endif %}
             </div>
@@ -94,8 +94,8 @@
             <img src="{% static 'images/background.png' %}" alt="background image" class="bg-image">
         </div>
         <div class="button-container">
-            <a href="#" class="learn-more-button">Join For Free</a>
-            <a href="#" class="learn-more-button">Learn More</a>
+            <a href="{% url 'user:signin' %}" class="learn-more-button">Join For Free</a>
+            <a href="{% url 'user:signin' %}" class="learn-more-button">Learn More</a>
         </div>
     </div>
     <!--  -->
@@ -397,8 +397,8 @@
     </div>
 
     <div class="study-home-buttons">
-        <button class="my-groups-button">My Groups</button>
-        <button class="virtual-sessions-button">Virtual Study Group Sessions</button>
+        <a href="{% url 'social:search_group' %}"><button class="my-groups-button">My Groups</button></a>
+        <a href="{% url 'social:feeds' %}"><button class="virtual-sessions-button">Campus Community</button></a>
     </div>
 
     <br><br><br>

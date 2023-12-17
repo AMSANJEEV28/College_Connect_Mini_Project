@@ -91,11 +91,11 @@
                 <h3>Your Groups:</h3>
                 <ul>
                     {% for joined_group in user_groups %}
-                        <li><a href="{% url 'group_detail' group_id=joined_group.group_id %}">{{ joined_group.name }}</a></li>
+                        <li><a href="{% url 'social:group_detail' group_id=joined_group.group_id %}">{{ joined_group.name }}</a></li>
                     {% endfor %}
                 </ul>
                 <br>
-                <p><a href="{% url 'create_group' %}"><button>Create a Group</button></a></p>
+                <p><a href="{% url 'social:create_group' %}"><button>Create a Group</button></a></p>
             </div>
             <div style="width: 48%;">
                 {% if search_results %}
@@ -103,7 +103,7 @@
                     <ul>
                         {% for group, already_member in search_results %}
                             <li>
-                                <a href="{% url 'group_detail' group_id=group.group_id %}">{{ group.name }}</a>
+                                <a href="{% url 'social:group_detail' group_id=group.group_id %}">{{ group.name }}</a>
                                 {% if already_member %}
                                     (You are already a member)
                                 {% endif %}
@@ -114,7 +114,7 @@
                     <p>No groups found.</p>
                 {% endif %}
                 <br>
-                <p><a href="{% url 'create_group' %}"><button>Create a Group</button></a></p>
+                <p><a href="{% url 'social:create_group' %}"><button>Create a Group</button></a></p>
             </div>
         </div>
     {% else %}

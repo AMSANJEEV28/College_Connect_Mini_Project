@@ -71,9 +71,12 @@
 
     <br><br>
     <p style="margin-top: 20px;">
-        <a href="{% url 'search_group' %}"><button>Search Groups</button></a>
-        <a href="{% url 'group_detail' group_id=1 %}"><button>View Sample Group</button></a>
-    </p>
+        <a href="{% url 'social:search_group' %}"><button>Search Groups</button></a>
+        {% if group_id %}
+            <a href="{% url 'social:group_detail' group_id=group_id %}"><button>View Created Group</button></a>
+        {% endif %}
+    
+        </p>
 </body>
 
 </html>

@@ -113,14 +113,14 @@
         <h3>Groups Joined:</h3>
         <ul>
             {% for joined_group in user_groups %}
-                <li><a href="{% url 'group_detail' group_id=joined_group.group_id %}">{{ joined_group.name }}</a></li>
+                <li><a href="{% url 'social:group_detail' group_id=joined_group.group_id %}">{{ joined_group.name }}</a></li>
             {% endfor %}
         </ul>
 
         <br><br>
         <p>
-            <a href="{% url 'create_group' %}"><button>Create a Group</button></a>
-            <a href="{% url 'search_group' %}"><button>Search Groups</button></a>
+            <a href="{% url 'social:create_group' %}"><button>Create a Group</button></a>
+            <a href="{% url 'social:search_group' %}"><button>Search Groups</button></a>
         </p>
     </div>
 
