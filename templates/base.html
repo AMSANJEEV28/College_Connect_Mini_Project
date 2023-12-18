@@ -14,24 +14,24 @@
             <div class="dropdown">
                 <a href="#">About Us</a>
                 <div class="dropdown-content">
-                    <a href="#">Team</a>
+                    <a href="{%url 'about' %}">Team</a>
                     <a href="#">Mission</a>
                     <a href="#">Blog/News</a>
                     <a href="#">Partnership</a>
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">Features</a>
+                <a href="">Features</a>
                 <div class="dropdown-content">
-                    <a href="{% url 'social:feeds' %}">Social Networking</a>
-                    <a href="#">Academic Resources</a>
-                    <a href="#">Career Development</a>
-                    <a href="#">User Engagement</a>
+                    <a href="{% url 'social:feeds_view' %}">Social Networking</a>
+                    <a href="{% url 'career:academic' %}">Academic Resources</a>
+                    <a href="{% url 'career:jobs' %}">Career Development</a>
+                    <!-- <a href="#">User Engagement</a> -->
 
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">Get Involved</a>
+                <a href="">Get Involved</a>
                 <div class="dropdown-content">
                     <a href="#">Support</a>
                     <a href="#">Feedback/Survey</a>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">Contact Us</a>
+                <a href="">Contact Us</a>
                 <div class="dropdown-content">
                     <a href="#">Contact Information</a>
                     <a href="#">FAQ</a>
@@ -76,11 +76,16 @@
         </div>
         
     </nav>
-    <div class="block-content">
+
+
+
+<div class="block-content">
     {% block content %}
-    <!-- Your content goes here -->
+        <!-- Your content goes here -->
     {% endblock %}
-    </div>
+</div>
+
+
 
     <!-- ----------------------------FOOTER -->
     <footer class="footer">
@@ -94,7 +99,7 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="{%url 'about' %}">About Us</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Get Involved</a></li>
                     <li><a href="#">Privacy Policy</a></li>
@@ -106,7 +111,7 @@
                 <ul>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Events</a></li>
-                    <li><a href="{% url 'social:search_group' %}">Study Groups</a></li>
+                    <li><a href="{%url 'social:search_group' %}">Groups</a></li>
                 </ul>
             </div>
             <div class="footer-section">

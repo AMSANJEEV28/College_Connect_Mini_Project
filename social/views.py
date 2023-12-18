@@ -75,17 +75,43 @@ def group_detail(request, group_id):
 
 from .models import Group
 
+# def feeds_view(request):
+#     # Retrieve the user's profile
+#     try:
+#         user_profile = UserProfile.objects.get(user=request.user)
+#     except UserProfile.DoesNotExist:
+#         user_profile = None
+
+#     # Retrieve the user's groups
+#     user_groups = Group.objects.filter(members=request.user)
+
+#     return render(request, 'feeds.html', {'user': request.user, 'user_profile': user_profile, 'user_groups': user_groups})
+
+# social/views.py
+
+from django.shortcuts import render
+from .models import Post
+from user.models import UserProfile
+
 def feeds_view(request):
     # Retrieve the user's profile
     try:
         user_profile = UserProfile.objects.get(user=request.user)
     except UserProfile.DoesNotExist:
         user_profile = None
-
+    
     # Retrieve the user's groups
     user_groups = Group.objects.filter(members=request.user)
 
-    return render(request, 'feeds.html', {'user': request.user, 'user_profile': user_profile, 'user_groups': user_groups})
+    # Retrieve all posts of the current user
+    user_posts = Post.objects.filter(user=request.user).order_by('-created_at')
+
+    return render(request, 'feeds.html', {'user': request.user, 'user_profile': user_profile, 'user_posts': user_posts, 'user_groups': user_groups})
+
+
+
+
+
 
 from django.shortcuts import render, redirect
 from .forms import GroupCreationForm, GroupSearchForm, GroupJoinForm, PostCreationForm
@@ -128,6 +154,13 @@ from django.contrib import messages
 from user.models import UserProfile
 from .models import Group  
 
+from django.shortcuts import render, redirect
+from .forms import PostCreationForm
+from .models import Post
+from django.contrib import messages
+from user.models import UserProfile
+from .models import Group  
+
 def create_post(request):
     user_groups = Group.objects.filter(members=request.user)
 
@@ -148,6 +181,9 @@ def create_post(request):
                 print(f"- {group.name}")
 
             messages.success(request, 'Post successfully created!')
+
+            # Redirect to the feeds page
+            return redirect('social:feeds_view')
 
     post_form = PostCreationForm(user=request.user)
     user_profile = UserProfile.objects.get(user=request.user) if UserProfile.objects.filter(user=request.user).exists() else None

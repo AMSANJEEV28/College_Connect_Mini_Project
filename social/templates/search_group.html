@@ -1,11 +1,9 @@
-<!-- search_group.html -->
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Groups</title>
+
+{% block content %}
+
     <style>
         body {
             background-color: #001735;
@@ -75,9 +73,7 @@
             text-decoration: underline;
         }
     </style>
-</head>
 
-<body>
     <h2>Search Groups</h2>
     <form method="post">
         {% csrf_token %}
@@ -120,6 +116,5 @@
     {% else %}
         <p>Login to see your groups.</p>
     {% endif %}
-</body>
 
-</html>
+{% endblock %}

@@ -23,26 +23,26 @@
         </div>
         <div class="navbar-links">
             <div class="dropdown">
-                <a href="#">About Us</a>
+                <a href="">About Us</a>
                 <div class="dropdown-content">
-                    <a href="#">Team</a>
+                    <a href="{%url 'about' %}">Team</a>
                     <a href="#">Mission</a>
                     <a href="#">Blog/News</a>
                     <a href="#">Partnership</a>
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">Features</a>
+                <a href="">Features</a>
                 <div class="dropdown-content">
-                    <a href="{% url 'social:feeds' %}">Social Networking</a>
-                    <a href="#">Academic Resources</a>
-                    <a href="#">Career Development</a>
-                    <a href="#">User Engagement</a>
+                    <a href="{% url 'social:feeds_view' %}">Social Networking</a>
+                    <a href="{% url 'career:academic' %}">Academic Resources</a>
+                    <a href="{% url 'career:jobs' %}">Career Development</a>
+                    <!-- <a href="#">User Engagement</a> -->
 
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">Get Involved</a>
+                <a href="">Get Involved</a>
                 <div class="dropdown-content">
                     <a href="#">Support</a>
                     <a href="#">Feedback/Survey</a>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="#">Contact Us</a>
+                <a href="">Contact Us</a>
                 <div class="dropdown-content">
                     <a href="#">Contact Information</a>
                     <a href="#">FAQ</a>
@@ -398,7 +398,7 @@
 
     <div class="study-home-buttons">
         <a href="{% url 'social:search_group' %}"><button class="my-groups-button">My Groups</button></a>
-        <a href="{% url 'social:feeds' %}"><button class="virtual-sessions-button">Campus Community</button></a>
+        <a href="{% url 'social:feeds_view' %}"><button class="virtual-sessions-button">Campus Community</button></a>
     </div>
 
     <br><br><br>
@@ -413,7 +413,7 @@
             <div class="arrow left" onclick="prevTestimonial()">&#8249;</div>
             <div class="testimonial-container">
                 <div class="testimonial-box">
-                    <img src="user1.jpg" alt="User 1" class="testimonial-image">
+                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="testimonial-image">
                     <p class="testimonial-name">John Doe</p>
                     <p class="testimonial-college">University of Example</p>
                     <p class="review">I am incredibly grateful for the support I received from this community. The study
@@ -427,7 +427,7 @@
                         camaraderie</p>
                 </div>
                 <div class="testimonial-box">
-                    <img src="user2.jpg" alt="User 2" class="testimonial-image">
+                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="testimonial-image">
                     <p class="testimonial-name">Jane Smith</p>
                     <p class="testimonial-college">Another University</p>
                     <p class="review">I can't express how much this community has enhanced my learning journey. The
@@ -483,8 +483,8 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{%url 'about' %}">About Us</a></li>
                     <li><a href="#">Features</a></li>
                     <li><a href="#">Get Involved</a></li>
                     <li><a href="#">Privacy Policy</a></li>
@@ -496,7 +496,7 @@
                 <ul>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Events</a></li>
-                    <li><a href="#">Study Groups</a></li>
+                    <li><a href="{%url 'social:search_group' %}">Groups</a></li>
                 </ul>
             </div>
             <div class="footer-section">

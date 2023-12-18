@@ -1,35 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+{% extends 'base.html' %}
+{% load static %}
 
+{% block content %}
+
+    <style>
         /* Component Styles */
-        #header {
+        .main-header {
             margin-top: 3vh;
             display: flex;
             justify-content: center;
         }
 
-        #header h1 {
+        .main-header h1 {
             color: #004080;
             font-size: 4.3rem;
         }
 
-        #content {
+        .main-content {
             display: flex;
             justify-content: space-evenly;
             margin-inline: 7vw;
         }
 
-        #left-side {
+        .left-section {
             display: flex;
             flex-direction: column;
         }
@@ -46,12 +39,12 @@
             width:90%;
         }
 
-        #right-side {
+        .right-section {
             margin-bottom: -30px;
             width: 60%;
         }
 
-        #quote-container {
+        .quote-section {
             background: #5383FF;
             border-radius: 1rem;
             display: flex;
@@ -60,7 +53,7 @@
             margin-top: 3vh;
         }
 
-        #quote-container h3 {
+        .quote-section h3 {
             font-size: 1.8rem;
             padding:0;
         }
@@ -112,7 +105,7 @@
             margin-bottom: 1vh;
         }
 
-        .highlighted-span {
+        .highlighted-block {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -125,21 +118,26 @@
             font-weight: 600;
             margin-top: 5vh;
         }
-        .highlighted-span a{
+        .highlighted-block a{
             text-decoration: none;
             color:#004080
         }
+
+        .quote-section h3{
+            color: #fff;
+            z-index: 9;
+        }
     </style>
+
     <title>Your Path to Professional Excellence</title>
-</head>
-<body>
-    <div id="header">
+
+    <div class="main-header">
         <h1>Your Path to Professional Excellence</h1>
     </div>
 
-    <div id="content">
-        <!-- Left Side -->
-        <div id="left-side">
+    <div class="main-content">
+        <!-- Left Section -->
+        <div class="left-section">
             <div class="image-container">
                 <img src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=450&h=250&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHlwaW5nJTIwbWFufGVufDB8fDB8fHww' alt='images1'>
             </div>
@@ -151,9 +149,9 @@
             </div>
         </div>
 
-        <!-- Right Side -->
-        <div id="right-side">
-            <div id="quote-container">
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="quote-section">
                 <h3>"FORGE YOUR FUTURE: YOUR CAREER AWAITS."</h3>
             </div>
 
@@ -189,25 +187,18 @@
                         <li>Contribute your own notes.</li>
                     </ul>
                 </div>
-                <div class="feature career-path">
-                    <h5>Career Path Resources</h5>
+                <div class="feature industry-experts">
+                    <h5>Industry Experts</h5>
                     <ul>
-                        <li>Engage with shared resources.</li>
-                        <li>Discuss and collaborate with peers.</li>
-                    </ul>
-                </div>
-                <div class="feature courses">
-                    <h5>Professional Development Courses</h5>
-                    <ul>
-                        <li>Refer to the previous year's exam papers.</li>
-                        <li>Contribute your own papers.</li>
+                        <li>Connect with experienced professionals.</li>
+                        <li>Stay updated on industry trends.</li>
                     </ul>
                 </div>
             </div>
 
-            <div  class="highlighted-span"><a href="#">Resume Builder</a></div>
-            <div  class="highlighted-span"><a href="#">Industry Experts</a></div>
+            <div class="highlighted-block"><a href="#">Resume Builder</a></div>
+            <div class="highlighted-block"><a href="#">Industry Experts</a></div>
         </div>
     </div>
-</body>
-</html>
+
+{% endblock %}

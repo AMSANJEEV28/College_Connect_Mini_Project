@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create a Group</title>
+
+{% block content %}
     <style>
         body {
             background-color: #001735;
@@ -56,9 +54,7 @@
             background-color: #001735;
         }
     </style>
-</head>
 
-<body>
     <h2>Create a Group</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -77,6 +73,6 @@
         {% endif %}
     
         </p>
-</body>
 
-</html>
+        
+{% endblock %}

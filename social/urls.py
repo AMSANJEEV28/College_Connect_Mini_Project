@@ -8,6 +8,6 @@ urlpatterns = [
     path('search_group/', search_group, name='search_group'),
     path('join_group/<str:group_id>/', join_group, name='join_group'),
     path('social/group_detail/<str:group_id>/', group_detail, name='group_detail'),
-    path('feeds/', feeds_view, name='feeds'),
-    path('create_post/', create_post, name='create_post'),  # Add this line
+    path('feeds/', feeds_view, name='feeds_view'),
+    path('create_post/', create_post, name='create_post'),
 ]

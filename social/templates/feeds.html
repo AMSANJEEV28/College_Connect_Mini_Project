@@ -410,6 +410,13 @@
 
         .group .group-h {
             color: black; 
+        }        
+        
+        .group .group-h-create {
+            color: #005a8e; 
+            position: absolute;
+            top:200px;
+            left: 70px;
         }
 
         .group > ul {
@@ -431,7 +438,7 @@
             align-items: center;
             justify-content: center;
             background-color: #ffffff;
-            height: 450px;
+            height: 550px;
             border-radius: 5px;
           }
           
@@ -612,6 +619,81 @@
             border: none;
             border-radius: 4px;
         }
+
+
+        /* ________________________--------------------- FEEDS STYLE ----------------------____________________*/
+
+
+
+        .feeds-all {
+            width: 670px;
+            margin-top: 20px;
+        }
+        
+        .post-box {
+            background-color: white;
+            padding: 15px; 
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden; 
+        }
+        
+        .post-caption {
+            color: #545454;
+            word-wrap: break-word; 
+            margin-bottom: 10px; 
+            padding: 10px;
+        }
+        
+        .post-image {
+            margin-top: 10px; 
+        }
+        
+        .post-image img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        
+        .user-profile-feeds img {
+            max-width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .user-profile-feeds{
+            display: flex;
+            align-items: center;
+            margin-top:-10px ;
+        }
+
+        .user-profile-feeds h4{
+            z-index: 999;
+            color: #000;
+        }
+
+        .more-info-feeds{
+            display: flex;
+            z-index: 999;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+    
+        .more-info-feeds p {
+            color: #7e7e7e;
+            font-style: italic; 
+            z-index: 999;
+            margin-top: -15px;
+            font-size: small;
+        }
+
+
+        
+
     </style>
 
 
@@ -625,30 +707,56 @@
             <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
         </div>
         <div class="navbar-links">
-            <!-- Existing dropdowns and links -->
+            <div class="dropdown">
+                <a href="#">About Us</a>
+                <div class="dropdown-content">
+                    <a href="{%url 'about' %}">Team</a>
+                    <a href="#">Mission</a>
+                    <a href="#">Blog/News</a>
+                    <a href="#">Partnership</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Features</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'social:feeds_view' %}">Social Networking</a>
+                    <a href="{% url 'career:academic' %}">Academic Resources</a>
+                    <a href="{% url 'career:jobs' %}">Career Development</a>
+                    <!-- <a href="#">User Engagement</a> -->
 
-            <!-- New links for Events, Groups, Connections -->
-            <a href="#">Events</a>
-            <a href="#">Groups</a>
-            <a href="#">Connections</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Get Involved</a>
+                <div class="dropdown-content">
+                    <a href="#">Support</a>
+                    <a href="#">Feedback/Survey</a>
+                    <a href="#">Alumni Network</a>
+                    <a href="#">User Dashboard</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Contact Us</a>
+                <div class="dropdown-content">
+                    <a href="#">Contact Information</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Help/Support</a>
+                </div>
+            </div>
         </div>
         <div class="navbar-icons">
-            <!-- Existing search and notification icons -->
-
-            <!-- New icons for Search and Notification -->
             <div class="search-icon"><i class="material-icons" style="font-size: 1.8rem;">search</i></div>
             <div class="notification-icon"><i class="material-icons" style="font-size: 1.8rem;">notifications</i></div>
-
-            <!-- Existing user profile dropdown -->
+            
             <div class="dropdown">
                 {% if user.is_authenticated %}
-                <div class="user-profile">
-                    <img src="{{ user.userprofile.profile_picture.url }}" class="profile-picture">
-                </div>
+                    <div class="user-profile">
+                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                    </div>
                 {% else %}
-                <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
                 {% endif %}
-
+                
                 {% if user.is_authenticated %}
                 <div class="dropdown-content">
                     <a href="{% url 'user:profile' %}">Profile</a>
@@ -662,7 +770,10 @@
                 {% endif %}
             </div>
         </div>
+        
     </nav>
+
+
     <br><br>
     <div class="content">
         <!-- Other content goes here -->
@@ -690,6 +801,8 @@
                                 <p>No groups found for this user.</p>
                             {% endif %}
                         </div>
+                        <br><br>
+                        <a href="{% url 'social:create_group' %}"><h4 class="group-h-create"> Click To Create More Groups </h4></a>
                     </div>
                     
                     
@@ -791,7 +904,7 @@
     </form>
 </div>
 
-{% for post in user_posts %}
+<!-- {% for post in user_posts %}
     <div class="card">
         <div class="profile-section">
             <img src="{{ post.user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
@@ -803,40 +916,13 @@
             </div>
         </div>
     </div>
-{% endfor %}
-
-
+{% endfor %} -->
 
 
             <!-- ------------------------------POST ENDS -->
 
 
-
-                <!-- posts -->
-<!-- feeds.html -->
-
 <!-- <div class="feed-container">
-    {% for post in user_posts %}
-        <div class="post">
-            <div class="user-info">
-                <div class="profile-pic"><img src="{{ post.user.userprofile.profile_picture.url }}" alt="Profile Picture"></div>
-                <div class="user-name">{{ post.user.get_full_name }}</div>
-            </div>
-            <div class="post-info">Posted on {{ post.created_at|date:"F j, Y" }}</div>
-            {% if post.image %}
-                <img src="{{ post.image.url }}" alt="Example Image">
-            {% endif %}
-            <div class="post-content">{{ post.caption }}</div>
-            <div class="post-actions">
-                <i class="far fa-thumbs-up"></i> Like
-                <i class="far fa-comment"></i> Comment
-                <i class="fas fa-share"></i> Share
-            </div>
-        </div>
-    {% endfor %}
-</div> -->
-
-<div class="feed-container">
     <p>User Groups:</p>
     <ul>
         {% for group in user_groups %}
@@ -847,26 +933,52 @@
     <p>User Posts:</p>
     <ul>
         {% for post in user_posts %}
-            <li>{{ post.id }} - {{ post.caption }} - {{ post.created_at }}</li>
+            <li>{{ post.id }}</li> <li>{{ post.caption }} - {{ post.created_at }}</li>
         {% endfor %}
     </ul>
+</div> -->
+
+
+
+{% for post in user_posts %}
+
+
+<div class="feeds-all">
+    <div class="post-box">
+        <div class="user-profile-feeds">
+            <img src="{{ user.userprofile.profile_picture.url }}" class="profile-picture">
+            <div class="more-info-feeds">
+                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                {% for group in user_groups %}
+                <p>Posted in Group : {{ group.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="post-caption"> {{ post.caption }} </div>
+        <div class="post-image">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post Image" class="post-image">
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 
 
 
+    <!-- <div class="card">
+        <div class="profile-section">
+            <img src="{{ post.user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
+            <div class="post-section">
+                <p>{{ post.caption }}</p>
+
+            </div>
+        </div>
+    </div> -->
+{% endfor %}
 
 
-
-
-
-
-
-
-
-
-
-                
+  
             </div>
 
 
@@ -874,45 +986,46 @@
             <div class="feedpgright">
                 <div class="news-module">
                   <div class="news-module__header">
-                    <h2 class="news-module__title">College Connect News</h2>
+                    <h2 class="news-module__title">Student Chronicles | News</h2>
                   </div>
-                
+              
                   <ul class="news-list">
                     <li class="news-item">
                       <a href="#" class="news-link">
-                        <div class="news-headline">15 Big Ideas that will shape 2024</div>
-                        <div class="news-subtext">Top news • 5,309 readers</div>
+                        <div class="news-headline">Breakthrough Innovations in College Education</div>
+                        <div class="news-subtext">Exploring groundbreaking ideas for the future • 5,309 readers</div>
                       </a>
                     </li>
                     <li class="news-item">
                       <a href="#" class="news-link">
-                        <div class="news-headline">Udaan raises $340 million</div>
-                        <div class="news-subtext">1d ago • 3,687 readers</div>
+                        <div class="news-headline">Record Funding for Student-Led Startups</div>
+                        <div class="news-subtext">Empowering the next generation • 1d ago • 3,687 readers</div>
                       </a>
                     </li>
                     <li class="news-item">
                       <a href="#" class="news-link">
-                        <div class="news-headline">E-commerce hits growth mode</div>
-                        <div class="news-subtext">4d ago • 726 readers</div>
+                        <div class="news-headline">Revolutionizing College E-learning Platforms</div>
+                        <div class="news-subtext">Adapting to the digital age • 4d ago • 726 readers</div>
                       </a>
                     </li>
                     <li class="news-item">
                       <a href="#" class="news-link">
-                        <div class="news-headline">Indian offices ride green wave</div>
-                        <div class="news-subtext">2d ago • 493 readers</div>
+                        <div class="news-headline">Green Initiatives on Campus: Students Take the Lead</div>
+                        <div class="news-subtext">Creating sustainable educational environments • 2d ago • 493 readers</div>
                       </a>
                     </li>
                     <li class="news-item">
                       <a href="#" class="news-link">
-                        <div class="news-headline">Digital lending on the rise</div>
-                        <div class="news-subtext">2d ago</div>
+                        <div class="news-headline">The Rise of Digital Learning Resources</div>
+                        <div class="news-subtext">Transforming education with technology • 2d ago</div>
                       </a>
                     </li>
                   </ul>
-                
+              
                   <button class="show-more-button" aria-label="Show more">Show more</button>
                 </div>
               </div>
+              
         </div>
 
 

@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ group.name }} Details</title>
+
+{% block content %}
+
     <style>
         body {
+            background-color: #001735;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+
+        }
+        .details{
             background-color: #001735;
             color: #fff;
             font-family: 'Arial', sans-serif;
@@ -14,7 +19,6 @@
             justify-content: space-around;
             align-items: flex-start;
         }
-
         .group-details,
         .user-groups {
             width: 48%;
@@ -28,11 +32,13 @@
 
         h2,
         h3 {
-            color: #ff3131;
+            color: #fff;
+            
         }
 
         p {
             margin-bottom: 20px;
+            color: #fff;
         }
 
         form {
@@ -62,8 +68,9 @@
         }
 
         a {
-            color: #ff3131;
+            color: #fff;
             text-decoration: none;
+
         }
 
         a:hover {
@@ -75,9 +82,7 @@
             margin-top: 20px;
         }
     </style>
-</head>
-
-<body>
+<div class="details">
     <div class="group-details">
         <h2>{{ group.name }}</h2>
         <p>{{ group.description }}</p>
@@ -123,6 +128,7 @@
             <a href="{% url 'social:search_group' %}"><button>Search Groups</button></a>
         </p>
     </div>
+</div>
 
     <script>
         function showGroupId() {
@@ -130,6 +136,5 @@
             groupIdDiv.style.display = 'block';
         }
     </script>
-</body>
 
-</html>
+{% endblock %}
