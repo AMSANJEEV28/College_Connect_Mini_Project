@@ -136,7 +136,7 @@ Access to CollegeConnect is restricted to verified college students using their 
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/College_Connect_Mini_Project.git
+   git clone https://github.com/AMSANJEEV28/College_Connect_Mini_Project.git
    cd College_Connect_Mini_Project
    ```
 
