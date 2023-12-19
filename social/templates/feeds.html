@@ -370,6 +370,7 @@
 
         .group-list {
             margin-top: 160px;
+            padding-bottom: 50px;
             list-style-type: none;
             padding: 0;
             width: 250px;
@@ -417,6 +418,7 @@
             position: absolute;
             top:200px;
             left: 70px;
+            margin-top: 70px;
         }
 
         .group > ul {
@@ -747,28 +749,37 @@
         <div class="navbar-icons">
             <div class="search-icon"><i class="material-icons" style="font-size: 1.8rem;">search</i></div>
             <div class="notification-icon"><i class="material-icons" style="font-size: 1.8rem;">notifications</i></div>
-            
+
             <div class="dropdown">
                 {% if user.is_authenticated %}
-                    <div class="user-profile">
-                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-                    </div>
+                    {% if user.userprofile.profile_picture %}
+                        <div class="user-profile">
+                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                        </div>
+                    {% else %}
+                        <div class="user-profile">
+                            <!-- Add a default image or placeholder if profile picture doesn't exist -->
+                            <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture">
+                        </div>
+                    {% endif %}
                 {% else %}
                     <a class="login-text" href="{% url 'user:signin' %}">Login</a>
                 {% endif %}
                 
                 {% if user.is_authenticated %}
-                <div class="dropdown-content">
-                    <a href="{% url 'user:profile' %}">Profile</a>
-                    <a href="{% url 'user:signout' %}">Logout</a>
-                </div>
+                    <div class="dropdown-content">
+                        <a href="{% url 'user:profile' %}">Profile</a>
+                        <a href="{% url 'user:signout' %}">Logout</a>
+                    </div>
                 {% else %}
-                <div class="dropdown-content">
-                    <a href="{% url 'user:signin' %}">Login</a>
-                    <a href="{% url 'user:signup' %}">Signup</a>
-                </div>
+                    <div class="dropdown-content">
+                        <a href="{% url 'user:signin' %}">Login</a>
+                        <a href="{% url 'user:signup' %}">Signup</a>
+                    </div>
                 {% endif %}
             </div>
+            
+
         </div>
         
     </nav>
@@ -781,13 +792,19 @@
         <div class="feedpg">
             <!-- left -->
             <div class="feedpgleft">
+
                 <div class="left-top">
                     <img class="bg-picture" src="{% static 'images/ind.jpeg' %}" alt="Bg Picture">
-                    <img class="lt-pp" src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture">
+                    {% if user.userprofile.profile_picture %}
+                        <img class="lt-pp" src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture">
+                    {% else %}
+                        <!-- Add a default image or placeholder if profile picture doesn't exist -->
+                        <img class="lt-pp" src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture">
+                    {% endif %}
                     <h4>{{ user.userprofile.first_name }} {{ user.userprofile.last_name }}</h4>
                     <p>{{ user.userprofile.bio }}</p>
                     <div class="custom-line-break"></div>
-
+                
                     <div class="group">
                         <h4 class="group-h"> My Groups </h4>
                         <div class="group-list">
@@ -804,9 +821,9 @@
                         <br><br>
                         <a href="{% url 'social:create_group' %}"><h4 class="group-h-create"> Click To Create More Groups </h4></a>
                     </div>
-                    
-                    
                 </div>
+                
+
             </div>
             
             
@@ -871,11 +888,17 @@
     <form method="post" enctype="multipart/form-data" action="{% url 'social:create_post' %}">
         {% csrf_token %}
         <div class="profile-section">
-            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
+            {% if user.userprofile.profile_picture %}
+                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
+            {% else %}
+                <!-- Add a default image or placeholder if profile picture doesn't exist -->
+                <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture-feed">
+            {% endif %}
             <div class="post-section">
                 <textarea name="caption" class="caption-input" placeholder="Write your caption..."></textarea>
             </div>
         </div>
+        
         <div class="post-section-bottom">
             <div class="post-type-section">
                 <label for="post-type" class="post-type-label">Select post type:</label>
